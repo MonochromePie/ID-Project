@@ -281,6 +281,11 @@ question_19 = {
     "obstacle" : [6,8,13,15],
     "end":[['bananaEndPoint',24]]
 }
+question_9 = {
+    "start": [['monkeyStartPoint',1]],
+    "obstacle" : [6,8,13,15],
+    "end":[['bananaEndPoint',24]]
+}
 
 
 
