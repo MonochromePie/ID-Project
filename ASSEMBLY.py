@@ -277,33 +277,101 @@ question_18 = {
     "end":[['coralEndPoint',24]]
 }
 question_19 = {
+    "start": [['nemoStartPoint',1]],
+    "obstacle" : [6,8,13,15],
+    "end":[['coralEndPoint',24]]
+}
+question_20 = {
+    "start": [['nemoStartPoint',3]],
+    "obstacle" : [8,12,15,19],
+    "end":[['coralEndPoint',24]]
+}
+question_21 = {
     "start": [['monkeyStartPoint',1]],
     "obstacle" : [6,8,13,15],
     "end":[['bananaEndPoint',24]]
 }
-question_9 = {
-    "start": [['monkeyStartPoint',1]],
-    "obstacle" : [6,8,13,15],
+question_22 = {
+    "start": [['monkeyStartPoint',22]],
+    "obstacle" : [11,17],
+    "end":[['bananaEndPoint',12]]
+}
+question_23 = {
+    "start": [['monkeyStartPoint',9]],
+    "obstacle" : [8,10,13],
+    "end":[['bananaEndPoint',20]]
+}
+question_24 = {
+    "start": [['monkeyStartPoint',0]],
+    "obstacle" : [1,10,12,19],
     "end":[['bananaEndPoint',24]]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-question_100 = {
+question_25 = {
+    "start": [['bearStartPoint',23]],
+    "obstacle" : [7,10,17,18],
+    "end":[['honeyEndPoint',23]]
+}
+question_26 = {
+    "start": [['duckStartPoint',4]],
+    "obstacle" : [6,13,18],
+    "end":[['ducklingsEndPoint',20]]
+}
+question_27 = {
+    "start": [['duckStartPoint',0]],
+    "obstacle" : [2,11,18],
+    "end":[['ducklingsEndPoint',24]]
+}
+question_28 = {
+    "start": [['duckStartPoint',0]],
+    "obstacle" : [6,12,15,17],
+    "end":[['ducklingsEndPoint',24]]
+}
+question_29 = {
+    "start": [['duckStartPoint',14]],
+    "obstacle" : [16,17,18,19],
+    "end":[['ducklingsEndPoint',24]]
+}
+question_30 = {
+    "start": [['duckStartPoint',20]],
+    "obstacle" : [0,11,16,21],
+    "end":[['ducklingsEndPoint',12]]
+}
+question_31 = {
     "start": [['bearStartPoint',12]],
     "obstacle" : [8,13,18,23],
     "end":[['honeyEndPoint',24]]
 }
-questionDict = {13:question_13}
+questionDict = {1:question_1,
+                2:question_2,
+                3:question_3,
+                4:question_4,
+                5:question_5,
+                6:question_6,
+                7:question_7,
+                8:question_8,
+                9:question_9,
+                10:question_10,
+                11:question_11,
+                12:question_12,
+                13:question_13,
+                14:question_14,
+                15:question_15,
+                16:question_16,
+                17:question_17,
+                18:question_18,
+                19:question_19,
+                20:question_20,
+                21:question_21,
+                22:question_22,
+                23:question_23,
+                24:question_24,
+                25:question_25,
+                26:question_26,
+                27:question_27,
+                28:question_28,
+                29:question_29,
+                30:question_30,
+                31:question_31}
 
 ############################################################################
 def main():
