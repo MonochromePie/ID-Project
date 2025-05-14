@@ -3,22 +3,7 @@ import numpy as np
 import math
 import cv2
 import random
-
-
-
-
-#########area for QR code cropping def###########
-
-
-
-
-
-
-
-
-
-
-###############################################
+import time
 
 def fixMatrixOrientation(data,direction):
     if direction == 'LEFT':
@@ -77,7 +62,10 @@ def makeCheckedPathMatrix(list, matrix):
     return path
 
 def searchNode(current_pos,matrix):
-    searched = np.array([[current_pos[0],current_pos[1]+1],[current_pos[0]+1,current_pos[1]],[current_pos[0],current_pos[1]-1],[current_pos[0]-1,current_pos[1]]])
+    searched = np.array([[current_pos[0],current_pos[1]+1],
+                         [current_pos[0]+1,current_pos[1]],
+                         [current_pos[0],current_pos[1]-1],
+                         [current_pos[0]-1,current_pos[1]]])
     deleteList = []
     
     for i in range(3,-1,-1):
@@ -95,9 +83,9 @@ def searchNode(current_pos,matrix):
     for i in range(len(searched)):
         value = matrix[searched[i][0]][searched[i][1]]
         valueInSearched = np.append(valueInSearched,np.array([[value]]),axis=0)
+        
     valueInSearched = np.delete(valueInSearched,0,axis=0)
-    valueInSearched = np.transpose(valueInSearched)
-
+    valueInSearched = np.transpose(valueInSearched) 
     return searched, valueInSearched
 
 def Astar(start,end,path,matrix):
@@ -247,101 +235,82 @@ question_14 = {
     "end":[['honeyEndPoint',2]]
 }
 question_15 = {
-    "start": [['bearStartPoint',23]],
-    "obstacle" : [4,11,18],
-    "end":[['honeyEndPoint',6]]
+    "start": [['nemoStartPoint',11]],
+    "obstacle" : [6,12,14,19],
+    "end":[['coralEndPoint',13]]
 }
 question_16 = {
     "start": [['nemoStartPoint',15]],
     "obstacle" : [10,18],
     "end":[['coralEndPoint',4]]
 }
-question_15 = {
-    "start": [['nemoStartPoint',11]],
-    "obstacle" : [6,12,1,19],
-    "end":[['coralEndPoint',13]]
-}
-question_16 = {
-    "start": [['nemoStartPoint',2]],
+question_17 = {
+    "start": [['nemoStartPoint',1]],
     "obstacle" : [7,13,15,20],
     "end":[['coralEndPoint',24]]
 }
-question_17 = {
-    "start": [['nemoStartPoint',15]],
+question_18 = {
+    "start": [['nemoStartPoint',1]],
     "obstacle" : [7,12,15,21],
     "end":[['coralEndPoint',24]]
 }
-question_18 = {
+question_19 = {
     "start": [['nemoStartPoint',3]],
     "obstacle" : [8,12,15,19],
-    "end":[['coralEndPoint',24]]
-}
-question_19 = {
-    "start": [['nemoStartPoint',1]],
-    "obstacle" : [6,8,13,15],
     "end":[['coralEndPoint',24]]
 }
 question_20 = {
-    "start": [['nemoStartPoint',3]],
-    "obstacle" : [8,12,15,19],
-    "end":[['coralEndPoint',24]]
-}
-question_21 = {
-    "start": [['monkeyStartPoint',1]],
-    "obstacle" : [6,8,13,15],
-    "end":[['bananaEndPoint',24]]
-}
-question_22 = {
-    "start": [['monkeyStartPoint',22]],
-    "obstacle" : [11,17],
-    "end":[['bananaEndPoint',12]]
-}
-question_23 = {
-    "start": [['monkeyStartPoint',9]],
-    "obstacle" : [8,10,13],
-    "end":[['bananaEndPoint',20]]
-}
-question_24 = {
-    "start": [['monkeyStartPoint',0]],
-    "obstacle" : [1,10,12,19],
-    "end":[['bananaEndPoint',24]]
-}
-question_25 = {
-    "start": [['bearStartPoint',23]],
-    "obstacle" : [7,10,17,18],
-    "end":[['honeyEndPoint',23]]
-}
-question_26 = {
     "start": [['duckStartPoint',4]],
     "obstacle" : [6,13,18],
     "end":[['ducklingsEndPoint',20]]
 }
-question_27 = {
+question_21 = {
     "start": [['duckStartPoint',0]],
     "obstacle" : [2,11,18],
     "end":[['ducklingsEndPoint',24]]
 }
-question_28 = {
-    "start": [['duckStartPoint',0]],
-    "obstacle" : [6,12,15,17],
-    "end":[['ducklingsEndPoint',24]]
-}
-question_29 = {
+question_22 = {
     "start": [['duckStartPoint',14]],
     "obstacle" : [16,17,18,19],
     "end":[['ducklingsEndPoint',24]]
 }
-question_30 = {
-    "start": [['duckStartPoint',20]],
+question_23 = {
+    "start": [['duckStartPoint',0]],
+    "obstacle" : [6,12,15,17],
+    "end":[['ducklingsEndPoint',24]]
+}
+question_24 = {
+    "start": [['duckStartPoint',12]],
     "obstacle" : [0,11,16,21],
-    "end":[['ducklingsEndPoint',12]]
+    "end":[['ducklingsEndPoint',20]]
 }
-question_31 = {
-    "start": [['bearStartPoint',12]],
-    "obstacle" : [8,13,18,23],
-    "end":[['honeyEndPoint',24]]
+question_25 = {
+    "start": [['monkeyStartPoint',1]],
+    "obstacle" : [6,8,13,15],
+    "end":[['bananaEndPoint',24]]
 }
-questionDict = {1:question_1,
+question_26 = {
+    "start": [['monkeyStartPoint',22]],
+    "obstacle" : [11,17],
+    "end":[['bananaEndPoint',12]]
+}
+question_27 = {
+    "start": [['monkeyStartPoint',9]],
+    "obstacle" : [8,10,13],
+    "end":[['bananaEndPoint',20]]
+}
+question_28 = {
+    "start": [['monkeyStartPoint',0]],
+    "obstacle" : [1,10,12,19],
+    "end":[['bananaEndPoint',24]]
+}
+question_29 = {
+    "start": [['monkeyStartPoint',22]],
+    "obstacle" : [8,10,17],
+    "end":[['bananaEndPoint',3]]
+}
+questionDict = {
+                1:question_1,
                 2:question_2,
                 3:question_3,
                 4:question_4,
@@ -370,14 +339,13 @@ questionDict = {1:question_1,
                 27:question_27,
                 28:question_28,
                 29:question_29,
-                30:question_30,
-                31:question_31}
+                }
 
 ############################################################################
 def main():
     #Question button pressed:
-    #randomQuestion = random.randint(1,30)
-    randomQuestion  = 13
+    randomQuestion = random.randint(1,31)
+    
     #send this info to display screen
 
 
@@ -424,7 +392,7 @@ def main():
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0],
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0],
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0],
-[0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 0, 0],
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0],
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 1, 3, 1],
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 11, 11, 11, 0, 1, 0] ])
